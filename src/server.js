@@ -2,7 +2,7 @@ import express from 'express';
 import 'dotenv/config';
 import alunoRoutes from './routes/alunoRoute.js';
 import fotoRoutes from './routes/fotoRoute.js';
-import pdfRoutes from './routes/pdfRoute.js'
+import pdfRoutes from './routes/pdfRoute.js';
 
 const app = express();
 app.use(express.json());
@@ -14,11 +14,9 @@ app.get('/', (req, res) => {
 });
 
 // Rotas
-app.use('/alunos', alunoRoutes);
-
-app.use('/alunos', fotoRoutes);
-
 app.use('/alunos', pdfRoutes);
+app.use('/alunos', fotoRoutes);
+app.use('/alunos', alunoRoutes);
 app.use('/uploads', express.static('uploads'));
 
 app.use((req, res) => {
